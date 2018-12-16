@@ -15,7 +15,7 @@ To change this template use File | Settings | File Templates.
     <title></title>
     <!-- Latest compiled and minified CSS -->
    
-   <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+   <link rel="stylesheet" type="text/css" href="css/bootstrap.mi.css">gi
     <script type="text/javascript" src="js/jquery.min.js"></script>
    <script type="text/javascript" src="js/bootstrap.min.js"></script>
 
