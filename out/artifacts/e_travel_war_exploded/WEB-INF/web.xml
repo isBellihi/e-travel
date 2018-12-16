@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+         version="4.0">
+    <welcome-file-list>
+        <welcome-file>/excurssion/create.jsp</welcome-file>
+    </welcome-file-list>
+
+    <servlet>
+        <servlet-name>VoyageServlet</servlet-name>
+        <servlet-class>web.Controlleur.VoyageServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>VoyageServlet</servlet-name>
+        <url-pattern>/new</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>createExcurssion</servlet-name>
+        <servlet-class>web.Controlleur.CreateExcurssionServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>createExcurssion</servlet-name>
+        <url-pattern>/excurssion/new.php</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>CreateServlet</servlet-name>
+        <servlet-class>web.Controlleur.CreateServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CreateServlet</servlet-name>
+        <url-pattern>/create</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>list</servlet-name>
+        <servlet-class>web.Controlleur.VoyageServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>list</servlet-name>
+        <url-pattern>/index</url-pattern>
+    </servlet-mapping>
+</web-app>
