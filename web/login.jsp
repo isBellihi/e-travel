@@ -166,10 +166,10 @@
                     </div>
                     <form id="login_form" method="post" action="http://vrent.techvill.net/authenticate" class='signup-form login-form' accept-charset='UTF-8'>
                         <div class="col-sm-12" style="padding-right: 0px !important;padding-left: 0px !important">
-                            <input type="text" class="form-control" name="email" placeholder = "O email">
+                            <input type="text" class="form-control" name="email" placeholder = "email">
                         </div>
                         <div class="col-sm-12" style="padding-right: 0px !important;padding-left: 0px !important">
-                            <input type="password" class="form-control" name="password" placeholder = "Senha">
+                            <input type="password" class="form-control" name="password" placeholder = "mot de pass">
                         </div>
                         <div class="col-sm-12" style="padding-right: 0px !important;padding-left: 0px !important">
                             <div class="col-sm-6 txt-left l-pad-none">
@@ -394,7 +394,7 @@
     jQuery.validator.addMethod("laxEmail", function(value, element) {
         // allow any non-whitespace characters as the host part
         return this.optional( element ) || /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/.test( value );
-    }, 'Please enter a valid email address.');
+    }, 's\'il vous plait saisi email valid.');
 
     $(document).ready(function () {
 
