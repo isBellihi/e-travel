@@ -151,13 +151,13 @@
             <div class="panel">
                 <div class="panel-body">
                     <a href="" class="btn btn-facebook" style="padding: 8px 8px !important;">
-                        <div class="responsive-content" style="font-size: 13px !important"><i class="fa fa-facebook pad-r-3"></i>Inscrivez via Facebook</div>
+                        <div class="responsive-content" style="font-size: 13px !important"><i class="fa fa-facebook pad-r-3"></i>Inscrivez vous avec Facebook</div>
                     </a>
                     <!--<div class="clearfix"></div>-->
                     <a href="" class="btn btn-google" style="padding: 8px 8px !important;">
                         <div class="responsive-content" style="font-size: 13px !important">
                             <i class="fa fa-google-plus pad-r-4"></i>
-                            Inscrivez via google
+                            Inscrivez vous via google
                         </div>
                     </a>
 

@@ -154,13 +154,13 @@
                 <div class="panel-body">
                     <div class="row col-center">
                         <a href="facebookLogin" class="btn btn-facebook" style="padding: 8px 8px !important">
-                            <div class="responsive-content" style="font-size: 13px !important"><i class="fa fa-facebook pad-r-3"></i>Inscreva-se no Facebook</div>
+                            <div class="responsive-content" style="font-size: 13px !important"><i class="fa fa-facebook pad-r-3"></i>Inscrivez vous avec Facebook</div>
                         </a>
                         <!--<div class="clearfix"></div>-->
-                        <a href="https://accounts.google.com/o/oauth2/auth?client_id=155732176097-s2b8liiqj6v8l39r25baq31vm3adg8uv.apps.googleusercontent.com&amp;redirect_uri=http%3A%2F%2Fvrent.techvill.net%2FgoogleAuthenticate&amp;scope=openid+profile+email&amp;response_type=code&amp;state=HVL6XCJSummPiDIuxOx6xchMdR8Ytg4Hnb4DkGcr" class="btn btn-google" style="padding: 8px 8px !important;">
+                        <a href="" class="btn btn-google" style="padding: 8px 8px !important;">
                             <div class="responsive-content" style="font-size: 13px !important">
                                 <i class="fa fa-google-plus pad-r-4"></i>
-                                Inscreva-se no Google
+                               Inscrivez vous via google
                             </div>
                         </a>
 
@@ -173,22 +173,22 @@
                         <div class="row">
                             <input type="hidden" name='email_signup' id='form'>
                             <div class="col-sm-12">
-                                <input type="text" class='form-control' value="" name='first_name' id='first_name' placeholder='Primeiro nome'>
+                                <input type="text" class='form-control' value="" name='first_name' id='first_name' placeholder='Prénom'>
                             </div>
                             <div class="col-sm-12">
-                                <input type="text" class='form-control' value="" name='last_name' id='last_name' placeholder='Último nome'>
+                                <input type="text" class='form-control' value="" name='last_name' id='last_name' placeholder='Nom'>
                             </div>
                             <div class="col-sm-12">
-                                <input type="text" class='form-control' value="" name='email' id='email' placeholder='O email'>
+                                <input type="text" class='form-control' value="" name='email' id='email' placeholder='Email'>
                                 <span class="text-danger">
                     <label id='emailError'></label>
                   </span>
                             </div>
                             <div class="col-sm-12">
-                                <input type="password" class='form-control' name='password' id='password' placeholder='Senha'>
+                                <input type="password" class='form-control' name='password' id='password' placeholder='mot de passe'>
                             </div>
                             <div class="col-sm-12">
-                                <label class="l-pad-none">Aniversário <span style="color: red !important;">*</span></label>
+                                <label class="l-pad-none">Anniversaire <span style="color: red !important;">*</span></label>
                             </div>
                             <div class="col-sm-12">
                                 <p class="error-tag"></p>
@@ -196,24 +196,24 @@
                             <div class="col-sm-12">
                                 <div class="col-sm-4 l-pad-none r-pad-none">
                                     <select name='birthday_month' class='form-control day-of-birth' id='user_birthday_month'>
-                                        <option value=''>Mês</option>
-                                        <option value="1" >January</option>
-                                        <option value="2" >February</option>
-                                        <option value="3" >March</option>
-                                        <option value="4" >April</option>
+                                        <option value=''>Moi</option>
+                                        <option value="1" >Janvier</option>
+                                        <option value="2" >Febrier</option>
+                                        <option value="3" >Mars</option>
+                                        <option value="4" >Avril</option>
                                         <option value="5" >May</option>
-                                        <option value="6" >June</option>
-                                        <option value="7" >July</option>
+                                        <option value="6" >Jun</option>
+                                        <option value="7" >Juilly</option>
                                         <option value="8" >August</option>
-                                        <option value="9" >September</option>
-                                        <option value="10" >October</option>
-                                        <option value="11" >November</option>
-                                        <option value="12" >December</option>
+                                        <option value="9" >Septembre</option>
+                                        <option value="10" >Octobre</option>
+                                        <option value="11" >Novembre</option>
+                                        <option value="12" >Decembre</option>
                                     </select>
                                 </div>
                                 <div class="col-sm-4 l-pad-none r-pad-none">
                                     <select name='birthday_day' class='form-control day-of-birth' id='user_birthday_day'>
-                                        <option value=''>Dia</option>
+                                        <option value=''>Journée</option>
                                         <option value="1" >1</option>
                                         <option value="2" >2</option>
                                         <option value="3" >3</option>
@@ -249,7 +249,7 @@
                                 </div>
                                 <div class="col-sm-4 l-pad-none r-pad-none">
                                     <select name='birthday_year' class='form-control day-of-birth' id='user_birthday_year'>
-                                        <option value=''>Ano</option>
+                                        <option value=''>Année</option>
                                         <option value="2018">2018</option>
                                         <option value="2017">2017</option>
                                         <option value="2016">2016</option>
