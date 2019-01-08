@@ -1,9 +1,9 @@
-$(document).ready(function() {
+/*$(document).ready(function() {
     var language = $('#language_footer').val();
     //alert(language);
     $.ajax({
       type: "POST",
-      url: APP_URL + "/set_session",
+      url: APP_URL + "/",
       data: {'language': language},
       async: false,
       success: function(msg) {
@@ -12,30 +12,30 @@ $(document).ready(function() {
       },
     });
 });
-$(document).on('change', '#calendar_dropdown', function(){
+/*$(document).on('change', '#calendar_dropdown', function(){
   var year_month = $(this).val();
   year_month     = year_month.split('-');
   var year       = year_month[0];
   var month      = year_month[1];
   set_calendar(month, year);
 });
-
-$(document).on('click', '.month-nav-next', function(e){
+*/
+/*$(document).on('click', '.month-nav-next', function(e){
   e.preventDefault();
   var year = $(this).attr('data-year');
   var month = $(this).attr('data-month');
   set_calendar(month, year);
-});
+});*/
 
-$(document).on('click', '.month-nav-previous', function(e){
+/*$(document).on('click', '.month-nav-previous', function(e){
   e.preventDefault();
   var year = $(this).attr('data-year');
   var month = $(this).attr('data-month');
   set_calendar(month, year);
-});
+});*/
 
 $(document).on('keyup', '#header-search-form', function(){
-  autocomplete = new google.maps.places.Autocomplete(document.getElementById("header-search-form")); 
+  autocomplete = new google.maps.places.Autocomplete(document.getElementById("header-search-form"));
   google.maps.event.addListener(autocomplete, 'place_changed', function() {
     /*var data = $("#header-search-form").val();
     console.log(data)*/
@@ -46,7 +46,7 @@ $(document).on('keyup', '#header-search-form', function(){
 });
 
 $(document).on('keyup', '#sidenav-search-form', function(){
-  autocomplete = new google.maps.places.Autocomplete(document.getElementById("sidenav-search-form")); 
+  autocomplete = new google.maps.places.Autocomplete(document.getElementById("sidenav-search-form"));
   google.maps.event.addListener(autocomplete, 'place_changed', function() {
     document.getElementById("sidenav-search-drop-down").classList.toggle("sm-show");
     $("#sidenav-search-checkin").datepicker("show");
@@ -54,7 +54,7 @@ $(document).on('keyup', '#sidenav-search-form', function(){
 });
 
 $(document).on('keyup', '#front-search-field', function(){
-  autocomplete = new google.maps.places.Autocomplete(document.getElementById("front-search-field")); 
+  autocomplete = new google.maps.places.Autocomplete(document.getElementById("front-search-field"));
   google.maps.event.addListener(autocomplete, 'place_changed', function() {
     $("#front-search-checkin").datepicker("show");
   });
@@ -64,7 +64,7 @@ $(document).on('keyup', '#location-search-google', function(){
   autocomplete = new google.maps.places.Autocomplete(document.getElementById("location-search-google"));
 });
 
-function set_calendar(month, year){
+/*function set_calendar(month, year){
   var property_id = $('#dtpc_property_id').val();
   var dataURL     = APP_URL+'/ajax-calender/'+property_id;
   var calendar    = '';
@@ -82,7 +82,7 @@ function set_calendar(month, year){
       console.log('error');
     }
   });
-}
+}*/
 
 $(document.body).on('click', '.date-package-modal', function(){
     //var fl = $(this).hasClass('tile-previous');
@@ -104,20 +104,20 @@ $(document.body).on('click', '.date-package-modal', function(){
         $("#dtpc_start").datepicker({
             dateFormat: "dd-mm-yy",
             onSelect: function(date) {
-               
+
             },
         });
         $("#dtpc_end").datepicker({
             dateFormat: "dd-mm-yy",
             onSelect: function(date) {
-                
+
             },
         });
         $('#hotel_date_package').modal();
     //}
 });
 
-$(document.body).on('submit', "#dtpc_form", function(e){
+/*$(document.body).on('submit', "#dtpc_form", function(e){
   e.preventDefault();
   $('#error-dtpc-start').html('');
   $('#error-dtpc-end').html('');
@@ -149,14 +149,14 @@ $(document.body).on('submit', "#dtpc_form", function(e){
             set_calendar(month, year);
             $('#model-message').html("Data save successfully");
             $('#model-message').show();
-            
+
          //}
       },
       error: function(request, error) {
           console.log(error);
       }
   });
-});
+});*/
 
 function mapDropDownActive(){
     document.getElementById("search-drop-down").classList.toggle("sm-show");
@@ -167,7 +167,7 @@ function mapDropDownActive(){
 window.onclick = function(event) {
   if (!event.target.matches('#search-map') && !event.target.matches('.sm-dropdown-content') && !$(event.target).parents(".sm-dropdown-content").length && !event.target.matches(".ui-state-default")
   && !event.target.matches('.ui-icon') && !event.target.matches('.ui-datepicker-month') && !event.target.matches('.ui-datepicker-year') && !event.target.matches('.month')) {
-   
+
   /*if ((!$(event.target).hasClass('sm-dropdown-content')) && (!$(event.target).parents(".sm-dropdown-content").length) && (!$(event.target).hasClass("ui-state-default")) && (!$(event.target).hasClass('ui-icon')) && (!$(event.target).hasClass('ui-datepicker-month')) && (!$(event.target).hasClass('ui-datepicker-year')) && (!$(event.target).hasClass('month'))) {
    */
     /*if(!$(event.target).hasClass('ui-icon')){*/
@@ -190,7 +190,7 @@ $(".search-form").submit(function(e) {
         i = "";
     var n = $("#header-search-form").val(),
         /*if(n==''){
-          n = $("#sidenav-search-form").val(); 
+          n = $("#sidenav-search-form").val();
         }*/
         c = n.replace(" ", "+");
     window.location.href = APP_URL + "/s?location=" + c + "&checkin=" + t + "&checkout=" + a + "&guest=" + o, e.preventDefault()
@@ -206,7 +206,7 @@ function page_loader_stop(){
 
 function modal_alert(message, call_back){
   $('#alert_model').modal('show');
-  
+
 }
 
 $('#ok_id').on('click', function(e){
@@ -219,7 +219,7 @@ $("#front-search-form").submit(function(e) {
         a = $("#front-search-checkout").val(),
         o = $("#front-search-guests").val(),
         i = "";
-    var n = $("#front-search-field").val(),        
+    var n = $("#front-search-field").val(),
         c = n.replace(" ", "+");
     window.location.href = APP_URL + "/search?location=" + c + "&checkin=" + t + "&checkout=" + a + "&guest=" + o, e.preventDefault()
 });
@@ -234,7 +234,7 @@ $(function() {
               $("#header-search-checkout").datepicker("show")
           }, 20)
       }
-  }); 
+  });
 });
 $(function() {
   $("#header-search-checkout").datepicker({
@@ -261,7 +261,7 @@ $(function() {
               $("#sidenav-search-checkout").datepicker("show")
           }, 20)
       }
-  }); 
+  });
 });
 $(function() {
   $("#sidenav-search-checkout").datepicker({
@@ -288,7 +288,7 @@ $(function() {
               $("#front-search-checkout").datepicker("show")
           }, 20)
       }
-  }); 
+  });
 });
 
 $(function() {
@@ -328,10 +328,10 @@ $(".search-form").submit(function(e) {
     window.location.href = APP_URL + "/search?location=" + c + "&checkin=" + t + "&checkout=" + a + "&guest=" + o, e.preventDefault()
 });
 
-$("#language_footer").change(function() {
+/*$("#language_footer").change(function() {
     $.ajax({
       type: "POST",
-      url: APP_URL + "/set_session",
+      url: APP_URL + "/",
       data: {'language': $(this).val()},
       async: false,
       success: function(msg) {
@@ -339,25 +339,25 @@ $("#language_footer").change(function() {
       },
     });
 });
-
-$("#currency_footer").change(function() {
+*/
+/*$("#currency_footer").change(function() {
     $.ajax({
       type: "POST",
-      url: APP_URL + "/set_session",
+      url: APP_URL + "/",
       data: {'currency': $(this).val()},
       async: false,
       success: function(msg) {
          location.reload()
       },
     });
-});
+});*/
 
-$(window).on('load',function() {
+/*$(window).on('load',function() {
     var language = $('#language_footer').val();
     //alert(language);
     $.ajax({
       type: "POST",
-      url: APP_URL + "/set_session",
+      url: APP_URL + "/",
       data: {'language': language},
       async: false,
       success: function(msg) {
@@ -365,9 +365,9 @@ $(window).on('load',function() {
          //location.reload()
       },
     });
-});
+});*/
 
-$('.room-list-status').change(function(){
+/*$('.room-list-status').change(function(){
   var status = $(this).val();
   var property = $(this).attr('data-room-id');
   $.ajax({
@@ -415,5 +415,5 @@ $('#host-message-form').submit(function(e){
     });
 });
 
-
+*/
 

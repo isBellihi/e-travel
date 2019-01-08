@@ -13,7 +13,7 @@ public abstract class DAO<T> {
         connection = SingletonConnection.getInstance();
     }
 
-    public abstract T find(int id);
+    public abstract Set<T> find(String attribut,int id);
     public abstract Set<T> getAll();
     public abstract boolean insert(T obj);
     public abstract boolean update(T obj);

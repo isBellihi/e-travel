@@ -8,13 +8,13 @@
    <meta charset="utf-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1">
-   <link rel="shortcut icon" href="public/front/images/logos/favicon.ico">
+   <link rel="shortcut icon" href="/e-travel/public/front/images/logos/favicon.ico">
    <title>Home | Vrent Home  </title>
 
    <meta property="og:image" content="">
    <meta name="mobile-web-app-capable" content="yes">
 
-   <link href="public/front/css/css.css" rel="stylesheet" type="text/css" />
+   <!--<link href="public/front/css/css.css" rel="stylesheet" type="text/css" />
    <link href="public/front/css/glyphicon.css" rel="stylesheet" type="text/css" />
    <link href="public/front/css/awsome/css/font-awesome.css" rel="stylesheet" type="text/css" />
    <link href="public/front/css/bootstrap.css" rel="stylesheet" type="text/css" />
@@ -26,14 +26,14 @@
    <link href="public/front/js/ninja/ninja-slider.css" rel="stylesheet" type="text/css" />
    <link href="public/front/css/bootstrap-slider.css" rel="stylesheet" type="text/css" />
    <link href="public/front/css/jquery.sidr.dark.css" rel="stylesheet" type="text/css" />
-   <!-- AnythingSlider -->
+
    <link rel="stylesheet" type="text/css" href="public/front/anything/css/anythingslider.css">
    <link rel="stylesheet" type="text/css" href="public/front/anything/css/theme-metallic.css">
    <link rel="stylesheet" type="text/css" href="public/front/anything/css/theme-minimalist-round.css">
    <link rel="stylesheet" type="text/css" href="public/front/anything/css/theme-minimalist-square.css">
    <link rel="stylesheet" type="text/css" href="public/front/anything/css/theme-construction.css">
    <link rel="stylesheet" type="text/css" href="public/front/anything/css/theme-cs-portfolio.css">
-
+    -->
    <style type="text/css">
 
       label.error {
@@ -57,57 +57,28 @@
 </head>
 <body>
 
-<header class="header transp sticky"> <!-- available class for header: .sticky .center-content .transp -->
-   <nav class="navbar navbar-inverse">
-      <div class="container">
-         <!-- Brand and toggle get grouped for better mobile display -->
-         <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed menubar-toggle">
-               <span class="sr-only"></span>
-               <span class="icon-bar"></span>
-               <span class="icon-bar"></span>
-               <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="index.html">
-               <img style="height: 27px; width: 120px;" src="public/front/images/logos/logo.png" alt="logo">
-            </a>
-            <!--/logo.png -->
-         </div>
-         <!-- Collect the nav links, forms, and other content for toggling -->
-         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav navbar-right">
-               <li><a href="login.html">Listez votre espace</a></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-               <li><a href="signup.html">S'inscrire</a></li>
-               <li><a href="login.html">S'identifier</a></li>
-            </ul>
-         </div>
-      </div><!-- /.container-fluid -->
-   </nav>
-</header>
 
-
+<%@ include file="/WEB-INF/layouts/header.jsp" %>
 
 <div id="mega-slider" class="carousel slide" data-ride="carousel">
    <!-- Wrapper for slides -->
    <div class="carousel-inner" role="listbox">
       <div class="item active">
-         <img src="public/front/images/banners/banner_1.jpg" alt="...">
+         <img src="/e-travel/public/front/images/banners/banner_1.jpg" alt="...">
          <div class="carousel-caption">
             <h2>BIENVENUE À L'HÔTEL</h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
          </div>
       </div>
       <div class="item ">
-         <img src="public/front/images/banners/banner_2.jpg" alt="...">
+         <img src="/e-travel/public/front/images/banners/banner_2.jpg" alt="...">
          <div class="carousel-caption">
             <h2>SENTEZ-VOUS COMME CHEZ VOUS</h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
          </div>
       </div>
       <div class="item ">
-         <img src="public/front/images/banners/banner_3.jpg" alt="...">
+         <img src="/e-travel/public/front/images/banners/banner_3.jpg" alt="...">
          <div class="carousel-caption">
             <h2>LOCATIONS DE VACANCES DE LUXE DANS LE MONDE ENTIER</h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
@@ -282,111 +253,7 @@
    <a href="login.html">S'identifier</a>
    <a href="login.html">Listez votre espace</a>
 </div>
-<footer class="mg-footer">
-   <div class="mg-footer-widget">
-      <div class="container">
-         <div class="row">
-            <div class="col-md-4 col-sm-6">
-               <div class="widget">
-                  <h2 class="mg-widget-title">HÉBERGEMENT</h2>
-
-
-                  <ul class="list-layout">
-                     <li><a href="Why%20Host.html" class="link-contrast">Pourquoi héberger</a></li>
-                     <li><a href="Responsible%20Hosting.html" class="link-contrast">Hébergement responsable</a></li>
-                     <li><a href="Trust%20%26%20Safety.html" class="link-contrast">Confiance &amp; sécurité</a></li>
-                  </ul>
-               </div>
-            </div>
-            <div class="col-md-4 col-sm-6">
-               <div class="widget">
-                  <h2 class="mg-widget-title">Empresa</h2>
-                  <ul class="list-layout">
-                     <li><a href="About%20us.html" class="link-contrast">About Us</a></li>
-                     <li><a href="Polices.html" class="link-contrast">Polices</a></li>
-                     <li><a href="Terms.html" class="link-contrast">Terms</a></li>
-                     <li><a href="Privacy.html" class="link-contrast">Privacy</a></li>
-                  </ul>
-               </div>
-            </div>
-            <div class="col-md-4 col-sm-6">
-               <div class="widget">
-                  <form>
-                     <select class="form-control footer-select" aria-labelledby="language-selector-label" id="language_footer" name="language">
-                        <option value="en"  > English</option>
-                        <option value="ar"  > عربى</option>
-                        <option value="fr"  > Français</option>
-                     </select>
-                     <p>
-                        <select class="form-control footer-select" aria-labelledby="language-selector-label" id="currency_footer" name="language">
-                           <option value="USD" selected > USD</option>
-                           <option value="GBP"  > GBP</option>
-                           <option value="EUR"  > EUR</option>
-                           <option value="AUD"  > AUD</option>
-                        </select>
-                     </p>
-                  </form>
-               </div>
-            </div>
-         </div>
-      </div>
-   </div>
-   <div class="mg-copyright">
-      <div class="container">
-         <div class="row">
-
-            <div class="col-md-6">
-               <ul class="mg-footer-nav">
-                  <li>© Vacation Rental, Inc.</li>
-               </ul>
-            </div>
-            <div class="col-md-6">
-               <ul class="list-layout list-inline pull-right">
-                  <link href="#" itemprop="url">
-                  <meta content="" itemprop="logo">
-                  <li>
-                     <a href="#" class="link-contrast footer-icon-container" target="_blank">
-                        <i class="fa pad-top-4 fa-facebook"></i>
-                     </a>
-                  </li>
-                  <li>
-                     <a href="#" class="link-contrast footer-icon-container" target="_blank">
-                        <i class="fa pad-top-4 fa-google-plus"></i>
-                     </a>
-                  </li>
-                  <li>
-                     <a href="#" class="link-contrast footer-icon-container" target="_blank">
-                        <i class="fa pad-top-4 fa-twitter"></i>
-                     </a>
-                  </li>
-                  <li>
-                     <a href="#" class="link-contrast footer-icon-container" target="_blank">
-                        <i class="fa pad-top-4 fa-linkedin"></i>
-                     </a>
-                  </li>
-                  <li>
-                     <a href="#" class="link-contrast footer-icon-container" target="_blank">
-                        <i class="fa pad-top-4 fa-pinterest"></i>
-                     </a>
-                  </li>
-                  <li>
-                     <a href="#" class="link-contrast footer-icon-container" target="_blank">
-                        <i class="fa pad-top-4 fa-youtube"></i>
-                     </a>
-                  </li>
-                  <li>
-                     <a href="#" class="link-contrast footer-icon-container" target="_blank">
-                        <i class="fa pad-top-4 fa-instagram"></i>
-                     </a>
-                  </li>
-
-               </ul>
-            </div>
-         </div>
-
-      </div>
-   </div>
-</footer>
+<%@ include file="/WEB-INF/layouts/footer.jsp" %>
 <div id="alert_model" class="modal fade" role="dialog">
    <div class="modal-dialog">
 
@@ -411,7 +278,7 @@
     var APP_URL = "index.html";
     var USER_ID = "";
 </script>
-<script src="public/front/js/jquery.js"></script>
+<!--<script src="public/front/js/jquery.js"></script>
 
 <script src="public/front/js/bootstrap.js"></script>
 
@@ -422,7 +289,7 @@
 <script src="public/front/js/bootbox.min.js"></script>
 <script src="public/front/js/front.js"></script>
 <script src="public/front/js/jquery.sidr.js"></script>
-
+-->
 <script type="text/javascript">
     $(document).ready(function() {
         $('.menubar-toggle').sidr({
@@ -434,23 +301,23 @@
         $.sidr('close', 'sidr');
     }
 </script>
-<script src="public/front/js/jquery.validate.min.js"></script>
+<!--<script src="public/front/js/jquery.validate.min.js"></script>
 <script src="public/front/js/ninja/ninja-slider.js"></script>
 <script src="public/front/js/bootstrap-slider.js"></script>
 <script src="public/front/js/selectFx.js"></script>
-<script src="public/front/js/admin.js"></script>
+<script src="public/front/js/admin.js"></script>-->
 <!--Anything Slider js -->
 <!-- Anything Slider optional plugins -->
-<script src="public/front/anything/js/jquery.easing.1.2.js"></script>
+<!--<script src="public/front/anything/js/jquery.easing.1.2.js"></script>-->
 <!-- http://ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js -->
-<script src="public/front/anything/js/swfobject.js"></script>
+<!--<script src="public/front/anything/js/swfobject.js"></script>-->
 
 
 <!-- AnythingSlider -->
-<script src="public/front/anything/js/jquery.anythingslider.js"></script>
+<!--<script src="public/front/anything/js/jquery.anythingslider.js"></script>-->
 
 <!-- AnythingSlider video extension; optional, but needed to control video pause/play -->
-<script src="public/front/anything/js/jquery.anythingslider.video.js"></script>
+<!--<script src="public/front/anything/js/jquery.anythingslider.video.js"></script>-->
 <script type="text/javascript">
     $(document).ready( function(){
         $(document).on('change', '.day-of-birth', function (){

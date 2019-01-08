@@ -1,7 +1,6 @@
 package metier;
 
-import web.Model.CoVoiturage;
-import web.Model.Excurssion;
+import web.Model.*;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -20,34 +19,35 @@ public class ExcurssionDao extends DAO<Excurssion>{
         Excurssion excurssion = new Excurssion();
 
         try {
-            excurssion.setId_excurssion(res.getInt("id_coVoiturage"));
+            excurssion.setId_excurssion(res.getInt("id_excurssion"));
+            excurssion.setClient(new ClientDao().find("id_client",res.getInt("id_client")).iterator().next());
             excurssion.setFrais(res.getDouble("frais"));
             excurssion.setNbrPlace(res.getInt("nbrPlace"));
             excurssion.setTitre(res.getString("titre"));
-            excurssion.setVilleDepart(new VilleDao().find(res.getInt("id_ville_depart")));
-            excurssion.setVilleArivee(new VilleDao().find(res.getInt("id_ville_arrivee")));
-            excurssion.setDateDepart(res.getString("dateDepart"));
-            excurssion.setDateArivee(res.getString("dateArrivee"));
+            excurssion.setVilleDepart(new VilleDao().find("id_ville",res.getInt("id_ville_depart")).iterator().next());
+            excurssion.setVilleArivee(new VilleDao().find("id_ville",res.getInt("id_ville_arrivee")).iterator().next());
+            excurssion.setDateDepart(res.getTimestamp("dateDepart"));
+            excurssion.setDateArivee(res.getTimestamp("dateArrivee"));
             excurssion.setDescription(res.getString("description"));
             excurssion.setFiche(res.getString("fiche"));
-
+            excurssion.setRegelement(res.getString("regelement"));
             return excurssion;
         }catch (Exception e){
-            System.out.println("error extractExcurssionFromResultSet: \n" + e.getMessage());
+            System.out.println("error extractExcurssionFromResultSet: " + e.getMessage());
         }
         return null;
     }
 
     @Override
-    public Excurssion find(int id) {
+    public Set<Excurssion> find(String attribut,int value) {
+        Set<Excurssion> set = new HashSet<>();
         try {
             Statement stm = connection.createStatement();
-            ResultSet res = stm.executeQuery("select * from Excurssion where id_Excurssion = " + id + ";");
-            if(res.next()){
-                return extractExcurssionFromResultSet(res);
-            }else {
-                return null;
+            ResultSet res = stm.executeQuery("select * from Excurssion where " + attribut +" = " +value + ";");
+            while (res.next()){
+                set.add(extractExcurssionFromResultSet(res));
             }
+            return set;
         }catch (Exception e){
             return null;
         }
@@ -94,25 +94,31 @@ public class ExcurssionDao extends DAO<Excurssion>{
         try {
             PreparedStatement ps = connection.prepareStatement("INSERT INTO excurssion" +
                     "(nbrPlace, frais, titre,dateDepart,dateArrivee,description" +
-                    ",id_ville_arrivee,id_ville_depart,fiche ) " +
-                    "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+                    ",id_ville_arrivee,id_ville_depart,fiche, id_client, regelement ) " +
+                    "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
             ps.setInt(1, excurssion.getNbrPlace());
             ps.setDouble(2, excurssion.getFrais() );
             ps.setString(3, excurssion.getTitre());
-            ps.setString(4, excurssion.getDateDepart());
-            ps.setString(5, excurssion.getDateArivee());
+            ps.setTimestamp(4, excurssion.getDateDepart());
+            ps.setTimestamp(5, excurssion.getDateArrivee());
             ps.setString(6,excurssion.getDescription());
             ps.setInt(7,excurssion.getVilleArivee().getId_ville());
             ps.setInt(8,excurssion.getVilleDepart().getId_ville());
             ps.setString(9,excurssion.getFiche());
+            ps.setInt(10,excurssion.getClient().getId_client());
+            ps.setString(11,excurssion.getRegelement());
 
             int i = ps.executeUpdate();
             if(i > 0) {
+                /*DAO<Outil> outilDAO = new OutilDao();
+                for (Outil outil : excurssion.getOutils()){
+                    outilDAO.insert(outil);
+                }*/
                 return true;
             }else {
             }
         } catch (Exception ex) {
-            System.out.println("error : " + ex.getMessage());
+            System.out.println("error INSERT EXCURSSION: " + ex);
         }
         return false;
     }
@@ -126,18 +132,22 @@ public class ExcurssionDao extends DAO<Excurssion>{
             PreparedStatement ps = connection.prepareStatement("UPDATE excurssion set nbrPlace =?" +
                     " , frais = ? , titre = ? ," +
                     "dateDepart = ? ,dateArrivee = ? ,description" +
-                    ",id_ville_arrivee = ? ,id_ville_depart = ? ,fiche = ?  ;");
+                    ",id_ville_arrivee = ? ,id_ville_depart = ? ,fiche = ?" +
+                    ", id_client = ? , regelement = ?  where id_excurssion = ? ;");
 
 
             ps.setInt(1, excurssion.getNbrPlace());
             ps.setDouble(2, excurssion.getFrais() );
             ps.setString(3, excurssion.getTitre());
-            ps.setString(4, excurssion.getDateDepart());
-            ps.setString(5, excurssion.getDateArivee());
+            ps.setTimestamp(4, excurssion.getDateDepart());
+            ps.setTimestamp(5, excurssion.getDateArrivee());
             ps.setString(6,excurssion.getDescription());
             ps.setInt(7,excurssion.getVilleArivee().getId_ville());
             ps.setInt(8,excurssion.getVilleDepart().getId_ville());
             ps.setString(9,excurssion.getFiche());
+            ps.setInt(10,excurssion.getClient().getId_client());
+            ps.setString(11,excurssion.getRegelement());
+            ps.setInt(12,excurssion.getId_excurssion());
 
             int i = ps.executeUpdate();
             if(i == 1) {
@@ -162,4 +172,48 @@ public class ExcurssionDao extends DAO<Excurssion>{
         return false;
     }
 
+    public int getMaxId(){
+        int a = 0;
+        try {
+            Statement stm = connection.createStatement();
+            String sql = "select max(id_excurssion) from excurssion ;" ;
+            ResultSet res = stm.executeQuery(sql);
+            if(res.next()){
+                a = res.getInt(1);
+            }
+        }catch (Exception e){
+
+        }
+
+        return a ;
+    }
+    public Set<Escale> getEscales(Excurssion excurssion){
+        Set<Escale> set = new HashSet();
+        DAO<Escale> escaleDAO = new EscaleDao();
+        set = escaleDAO.find("id_excurssion",excurssion.getId_excurssion());
+        for (Escale esclae :set){
+            excurssion.addEscale(esclae);
+        }
+        return set ;
+    }
+
+    public Set<Outil> getOutils(Excurssion excurssion){
+        Set<Outil> set = new HashSet<>();
+        DAO<Outil> outilDAO = new OutilDao();
+        set = outilDAO.find("id_excurssion" , excurssion.getId_excurssion());
+        for (Outil outil : set){
+            excurssion.addOutil(outil);
+        }
+        return set ;
+    }
+
+    public Set<Reservation> getReservations(Excurssion excurssion){
+        Set<Reservation> set = new HashSet<>();
+        DAO<Reservation> reservationDao = new ReservationDao();
+        set = reservationDao.find("id_excurssion" , excurssion.getId_excurssion());
+        for (Reservation reservation : set){
+            excurssion.addReservation(reservation);
+        }
+        return set ;
+    }
 }

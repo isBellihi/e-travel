@@ -6,23 +6,6 @@ public class CoVoiturage extends Voyage {
     private Double frais ;
     private  String marqueVoiture ;
 
-    public CoVoiturage(int id_voyage, String dateDepart, String dateArivee, String description,
-                       Ville villeDepart, Ville villeArivee, int id_coVoiturage, int nbrPlace,
-                       Double frais, String marqueVoiture) {
-        super(id_voyage, dateDepart, dateArivee, description, villeDepart, villeArivee);
-        this.id_coVoiturage = id_coVoiturage;
-        this.nbrPlace = nbrPlace;
-        this.frais = frais;
-        this.marqueVoiture = marqueVoiture;
-    }
-
-    public CoVoiturage(int id_coVoiturage, int nbrPlace, Double frais, String marqueVoiture) {
-        super();
-        this.id_coVoiturage = id_coVoiturage;
-        this.nbrPlace = nbrPlace;
-        this.frais = frais;
-        this.marqueVoiture = marqueVoiture;
-    }
     public CoVoiturage(){}
 
     public int getId_coVoiturage() {

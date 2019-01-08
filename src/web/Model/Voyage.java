@@ -1,20 +1,21 @@
 package web.Model;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 
 public class Voyage {
     private int id_voyage ;
-    private String dateDepart, dateArivee ;
+    private Timestamp dateDepart, dateArrivee ;
     private String description;
-    private Ville villeDepart, villeArivee;
+    private Ville villeDepart, villeArrivee;
 
-    public Voyage(int id_voyage, String dateDepart, String dateArivee, String description, Ville villeDepart, Ville villeArivee) {
+    public Voyage(int id_voyage, Timestamp dateDepart, Timestamp dateArivee, String description, Ville villeDepart, Ville villeArivee) {
         this.id_voyage = id_voyage;
         this.dateDepart = dateDepart;
-        this.dateArivee = dateArivee;
+        this.dateArrivee = dateArivee;
         this.description = description;
         this.villeDepart = villeDepart;
-        this.villeArivee = villeArivee;
+        this.villeArrivee = villeArivee;
     }
     public Voyage(){
 
@@ -27,20 +28,20 @@ public class Voyage {
         this.id_voyage = id_voyage;
     }
 
-    public String getDateDepart() {
+    public Timestamp getDateDepart() {
         return dateDepart;
     }
 
-    public void setDateDepart(String dateDepart) {
+    public void setDateDepart(Timestamp dateDepart) {
         this.dateDepart = dateDepart;
     }
 
-    public String getDateArivee() {
-        return dateArivee;
+    public Timestamp getDateArrivee() {
+        return dateArrivee;
     }
 
-    public void setDateArivee(String dateArivee) {
-        this.dateArivee = dateArivee;
+    public void setDateArivee(Timestamp dateArivee) {
+        this.dateArrivee = dateArivee;
     }
 
     public String getDescription() {
@@ -60,10 +61,15 @@ public class Voyage {
     }
 
     public Ville getVilleArivee() {
-        return villeArivee;
+        return villeArrivee;
     }
 
+    public Ville getVilleArrivee() {
+        return villeArrivee;
+    }
+
+
     public void setVilleArivee(Ville villeArivee) {
-        this.villeArivee = villeArivee;
+        this.villeArrivee = villeArivee;
     }
 }

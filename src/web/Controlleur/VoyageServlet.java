@@ -8,6 +8,9 @@ import web.Model.Ville;
 
 import javax.servlet.RequestDispatcher;
 import java.io.IOException;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.Set;
 
 public class VoyageServlet extends javax.servlet.http.HttpServlet {
@@ -18,10 +21,11 @@ public class VoyageServlet extends javax.servlet.http.HttpServlet {
         CoVoiturage voyage = new CoVoiturage();
         DAO<Ville> villeDAO = new VilleDao();
         voyage.setDescription(request.getParameter("description"));
-        voyage.setDateArivee(request.getParameter("dateArrivee"));
-        voyage.setDateDepart(request.getParameter("dateDepart"));
-        voyage.setVilleArivee(villeDAO.find(Integer.parseInt(request.getParameter("villeArrivee"))));
-        voyage.setVilleDepart(villeDAO.find(Integer.parseInt(request.getParameter("villeDepart"))));
+
+        voyage.setDateArivee(Timestamp.valueOf(request.getParameter("dateArrivee")));
+        voyage.setDateDepart(Timestamp.valueOf(request.getParameter("dateDepart")));
+        voyage.setVilleArivee(villeDAO.find("id_ville",Integer.parseInt(request.getParameter("villeArrivee"))).iterator().next());
+        voyage.setVilleDepart(villeDAO.find("id_ville",Integer.parseInt(request.getParameter("villeDepart"))).iterator().next());
         voyage.setMarqueVoiture(request.getParameter("marqueVoiture"));
         voyage.setNbrPlace(Integer.parseInt(request.getParameter("nbrPlace")));
         voyage.setFrais(Double.parseDouble(request.getParameter("frais")));

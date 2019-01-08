@@ -1,6 +1,8 @@
 package metier;
 
 import web.Model.Client;
+import web.Model.Excurssion;
+import web.Model.Reservation;
 import web.Model.SingletonConnection;
 
 import java.sql.Connection;
@@ -20,28 +22,48 @@ public class ClientDao extends DAO<Client> {
         Client client = new Client();
         try {
             client.setId_client(res.getInt("id_Client"));
+            client.setEmail(res.getString("email"));
+            client.setPasswd(res.getString("passwd"));
             client.setNom(res.getString("nom"));
             client.setPrenom(res.getString("prenom"));
             client.setAddress(res.getString("address"));
-            client.setDateNaissance(res.getDate("dateNaissance"));
+            client.setDateNaissance(res.getString("dateNaissance"));
             client.setNumTele(res.getString("NumTele"));
-
+            client.setImage(res.getString("image"));
             return client;
         }catch (Exception e){
             return  null;
         }
 
     }
-    @Override
-    public Client find(int id) {
+
+    public Client find(String username,String pass) {
         try {
-            Statement stm = connection.createStatement();
-            ResultSet res = stm.executeQuery("select * from Client where id_Client = " + id + ";");
+            PreparedStatement stm = connection.prepareStatement("select * from client where email = ? and passwd = ? ;");
+            stm.setString(1,username);
+            stm.setString(2,pass);
+            ResultSet res = stm.executeQuery();
             if(res.next()){
                 return extractClientFromResultSet(res);
             }else {
                 return null;
             }
+        }catch (Exception e){
+            System.out.println("error find by email and passwd " + e);
+        }
+        return null;
+    }
+
+    @Override
+    public Set<Client> find(String attribut,int value) {
+        Set<Client> set = new HashSet<>();
+        try {
+            Statement stm = connection.createStatement();
+            ResultSet res = stm.executeQuery("select * from Client where " + attribut + " = " + value + ";");
+            while(res.next()){
+                set.add(extractClientFromResultSet(res));
+            }
+            return set ;
         }catch (Exception e){
             return null;
         }
@@ -71,19 +93,23 @@ public class ClientDao extends DAO<Client> {
 //id_client	prenom	nom	address	dateNaissance	NumTele
         try {
             PreparedStatement ps = connection.prepareStatement("INSERT INTO Client" +
-                    "(nom, prenom, address,dateNaissance,NumTele)" +
-                    "VALUES (?, ? , ? , ? , ?)");
-            ps.setString(1, client.getNom());
-            ps.setString(2, client.getPrenom());
-            ps.setString(3, client.getAddress());
-            ps.setString(4, client.getDateNaissance().toString());
-            ps.setString(5, client.getNumTele());
+                    "(email,passwd,nom, prenom, address,dateNaissance,NumTele,image)" +
+                    "VALUES (?, ? , ? , ? , ?, ?, ?, ?)");
+            ps.setString(1, client.getEmail());
+            ps.setString(2, client.getPasswd());
+            ps.setString(3, client.getNom());
+            ps.setString(4, client.getPrenom());
+            ps.setString(5, client.getAddress());
+            ps.setString(6, client.getDateNaissance());
+            ps.setString(7, client.getNumTele());
+            ps.setString(8, client.getImage());
 
             int i = ps.executeUpdate();
             if(i == 1) {
                 return true;
             }
         } catch (Exception ex) {
+            System.out.println("error insert client : " + ex);
         }
         return false;
     }
@@ -91,14 +117,17 @@ public class ClientDao extends DAO<Client> {
     @Override
     public boolean update(Client client) {
         try {
-            PreparedStatement ps = connection.prepareStatement("UPDATE Client set nom =? , prenom = ? , " +
-                    "address = ? , dateNaissance = ? , NumTele = ? , where id_Client = ? ;");
-            ps.setString(1, client.getNom());
-            ps.setString(2, client.getPrenom());
-            ps.setString(3, client.getAddress());
-            ps.setDate(4, client.getDateNaissance());
-            ps.setString(5, client.getNumTele());
-            ps.setInt(3, client.getId_client());
+            PreparedStatement ps = connection.prepareStatement("UPDATE Client set email = ? , passwd = ? , nom =? , prenom = ? , " +
+                    "address = ? , dateNaissance = ? , NumTele = ? ,image = ? where id_Client = ? ;");
+            ps.setString(1, client.getEmail());
+            ps.setString(2, client.getPasswd());
+            ps.setString(3, client.getNom());
+            ps.setString(4, client.getPrenom());
+            ps.setString(5, client.getAddress());
+            ps.setString(6, client.getDateNaissance());
+            ps.setString(7, client.getNumTele());
+            ps.setString(8, client.getImage());
+            ps.setInt(9, client.getId_client());
 
 
             int i = ps.executeUpdate();
@@ -122,5 +151,41 @@ public class ClientDao extends DAO<Client> {
 
         }
         return false;
+    }
+
+    public int getMaxId(){
+        int a = 0;
+        try {
+            Statement stm = connection.createStatement();
+            String sql = "select max(id_client) from client ;" ;
+            ResultSet res = stm.executeQuery(sql);
+            if(res.next()){
+                a = res.getInt(1);
+            }
+        }catch (Exception e){
+
+        }
+
+        return a ;
+    }
+
+    public Set<Excurssion> getExcurssions(Client client){
+        Set<Excurssion> set = new HashSet();
+        DAO<Excurssion> excurssionDao = new ExcurssionDao();
+        set = excurssionDao.find("id_client",client.getId_client());
+        for (Excurssion excurssion : set){
+            client.addExcurssion(excurssion);
+        }
+        return set ;
+    }
+
+    public Set<Reservation> getReservations(Client client){
+        Set<Reservation> set = new HashSet<>();
+        DAO<Reservation> reservationDao = new ReservationDao();
+        set = reservationDao.find("id_client" , client.getId_client());
+        for (Reservation reservation : set){
+            client.addReservation(reservation);
+        }
+        return set ;
     }
 }

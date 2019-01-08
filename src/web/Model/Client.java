@@ -2,6 +2,9 @@ package web.Model;
 
 
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Client {
     //`id_client`, `prenom`, `nom`, `address`, `dateNaissance`, `NumTele`SELECT * FROM `client` WHERE 1
@@ -9,20 +12,51 @@ public class Client {
     private String prenom;
     private String nom;
     private String address;
-    private Date dateNaissance;
+    private String dateNaissance;
     private String numTele;
+    private String email ;
+    private String passwd ;
+    private String image;
+    private Set<Excurssion> excurssions ;
+    private Set<Reservation> reservations ;
 
     public Client(){
-
+        excurssions = new HashSet<Excurssion>();
+        reservations = new HashSet<Reservation>();
     }
 
-    public Client(int id_client, String prenom, String nom, String address, Date dateNaissance, String numTele) {
-        this.id_client = id_client;
-        this.prenom = prenom;
-        this.nom = nom;
-        this.address = address;
-        this.dateNaissance = dateNaissance;
-        this.numTele = numTele;
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public void addExcurssion(Excurssion excurssion){
+        this.excurssions.add(excurssion);
+        excurssion.setClient(this);
+    }
+
+    public void addReservation(Reservation reservation){
+        this.reservations.add(reservation);
+        reservation.setClient(this);
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPasswd() {
+        return passwd;
+    }
+
+    public void setPasswd(String passwd) {
+        this.passwd = passwd;
     }
 
     public int getId_client() {
@@ -57,11 +91,11 @@ public class Client {
         this.address = address;
     }
 
-    public Date getDateNaissance() {
+    public String getDateNaissance() {
         return dateNaissance;
     }
 
-    public void setDateNaissance(Date dateNaissance) {
+    public void setDateNaissance(String dateNaissance) {
         this.dateNaissance = dateNaissance;
     }
 

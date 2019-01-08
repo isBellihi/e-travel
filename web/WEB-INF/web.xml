@@ -4,26 +4,17 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
     <welcome-file-list>
-        <welcome-file>/excurssion/create.jsp</welcome-file>
+        <welcome-file>/index.jsp</welcome-file>
     </welcome-file-list>
 
-    <servlet>
-        <servlet-name>VoyageServlet</servlet-name>
-        <servlet-class>web.Controlleur.VoyageServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>VoyageServlet</servlet-name>
-        <url-pattern>/new</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
-        <servlet-name>createExcurssion</servlet-name>
-        <servlet-class>web.Controlleur.CreateExcurssionServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>createExcurssion</servlet-name>
-        <url-pattern>/excurssion/new.php</url-pattern>
-    </servlet-mapping>
+    <filter>
+        <filter-name>router</filter-name>
+        <filter-class>web.Controlleur.Router</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>router</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
 
     <servlet>
         <servlet-name>CreateServlet</servlet-name>
@@ -42,4 +33,43 @@
         <servlet-name>list</servlet-name>
         <url-pattern>/index</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>signup</servlet-name>
+        <servlet-class>web.Controlleur.auth.ServletSignup</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>signup</servlet-name>
+        <url-pattern>/signup</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>signin</servlet-name>
+        <servlet-class>web.Controlleur.auth.ServletLogin</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>signin</servlet-name>
+        <url-pattern>/signin</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>logout</servlet-name>
+        <servlet-class>web.Controlleur.auth.Logout</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>logout</servlet-name>
+        <url-pattern>/logout</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>new excursion</servlet-name>
+        <servlet-class>web.Controlleur.CreateExcurssionServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>new excursion</servlet-name>
+        <url-pattern>/new</url-pattern>
+    </servlet-mapping>
+
+
 </web-app>

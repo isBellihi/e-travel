@@ -27,10 +27,10 @@ public class CoVoiturageDao extends DAO<CoVoiturage>{
                 coVoiturage.setFrais(res.getDouble("frais"));
                 coVoiturage.setNbrPlace(res.getInt("nbrPlace"));
                 coVoiturage.setMarqueVoiture(res.getString("marqueVoiture"));
-                coVoiturage.setVilleDepart(new VilleDao().find(res.getInt("id_ville_depart")));
-                coVoiturage.setVilleArivee(new VilleDao().find(res.getInt("id_ville_arrivee")));
-                coVoiturage.setDateDepart(res.getString("dateDepart"));
-                coVoiturage.setDateArivee(res.getString("dateArrivee"));
+                coVoiturage.setVilleDepart(new VilleDao().find("id_ville",res.getInt("id_ville_depart")).iterator().next());
+                coVoiturage.setVilleArivee(new VilleDao().find("id_ville",res.getInt("id_ville_arrivee")).iterator().next());
+                coVoiturage.setDateDepart(res.getTimestamp("dateDepart"));
+                coVoiturage.setDateArivee(res.getTimestamp("dateArrivee"));
                 coVoiturage.setDescription(res.getString("description"));
                 return coVoiturage;
             }catch (Exception e){
@@ -40,15 +40,15 @@ public class CoVoiturageDao extends DAO<CoVoiturage>{
         }
 
         @Override
-        public CoVoiturage find(int id) {
+        public Set<CoVoiturage> find(String attribut,int id) {
+            Set<CoVoiturage> set = new HashSet<>();
             try {
                 Statement stm = connection.createStatement();
                 ResultSet res = stm.executeQuery("select * from coVoiturage where id_coVoiturage = " + id + ";");
-                if(res.next()){
-                    return extractCoVoiturageFromResultSet(res);
-                }else {
-                    return null;
+                while (res.next()){
+                    set.add(extractCoVoiturageFromResultSet(res));
                 }
+                return set;
             }catch (Exception e){
                 return null;
             }
@@ -100,8 +100,8 @@ public class CoVoiturageDao extends DAO<CoVoiturage>{
                 ps.setInt(1, coVoiturage.getNbrPlace());
                 ps.setDouble(2, coVoiturage.getFrais() );
                 ps.setString(3, coVoiturage.getMarqueVoiture());
-                ps.setString(4, coVoiturage.getDateDepart());
-                ps.setString(5, coVoiturage.getDateArivee());
+                ps.setTimestamp(4, coVoiturage.getDateDepart());
+                ps.setTimestamp(5, coVoiturage.getDateArrivee());
                 ps.setString(6,coVoiturage.getDescription());
                 ps.setInt(7,coVoiturage.getVilleArivee().getId_ville());
                 ps.setInt(8,coVoiturage.getVilleDepart().getId_ville());

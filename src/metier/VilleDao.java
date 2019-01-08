@@ -34,13 +34,15 @@ public class VilleDao extends DAO<Ville> {
         return null;
     }
     @Override
-    public Ville find(int id) {
+    public Set<Ville> find(String attribut,int id) {
+        Set<Ville> set = new HashSet<>();
         try {
             Statement stm = connection.createStatement();
             ResultSet res = stm.executeQuery("select * from Ville where id_ville = " + id + ";");
-            if(res.next()){
-                return extractVilleFromResultSet(res);
+            while (res.next()){
+                set.add(extractVilleFromResultSet(res));
             }
+            return set ;
         }catch (Exception e){
             System.out.println(" find ville by id failed : " + e.getMessage());
         }

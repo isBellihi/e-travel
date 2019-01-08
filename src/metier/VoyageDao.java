@@ -22,11 +22,11 @@ public class VoyageDao extends DAO<Voyage> {
 
         try {
             voyage.setId_voyage(res.getInt("id_voyage"));
-            voyage.setDateDepart(res.getDate("dateDepart").toString());
-            voyage.setDateArivee(res.getDate("dateArrivee").toString());
+            voyage.setDateDepart(res.getTimestamp("dateDepart"));
+            voyage.setDateArivee(res.getTimestamp("dateArrivee"));
             voyage.setDescription(res.getString("description"));
-            voyage.setVilleArivee(villedao.find(res.getInt("id_ville_arrivee")));
-            voyage.setVilleDepart(villedao.find(res.getInt("id_ville_depart")));
+            voyage.setVilleArivee(villedao.find("id_ville",res.getInt("id_ville_arrivee")).iterator().next());
+            voyage.setVilleDepart(villedao.find("id_ville",res.getInt("id_ville_depart")).iterator().next());
             return voyage;
         }catch (Exception e){
             return null;
@@ -34,16 +34,15 @@ public class VoyageDao extends DAO<Voyage> {
     }
     
     @Override
-    public Voyage find(int id) {
+    public Set<Voyage> find(String attribut,int value) {
+        Set<Voyage> set = new HashSet<>();
         try {
             Statement stm = connection.createStatement();
-            ResultSet res = stm.executeQuery("select * from voyages where id_voyage = " + id + ";");
-            Voyage voyage = new Voyage();
-            if(res.next()){
-                return extractVoyageFromResultSet(res);
-            }else {
-                return null;
+            ResultSet res = stm.executeQuery("select * from Voyages where " + attribut +" = " +value + ";");
+            while (res.next()){
+                set.add(extractVoyageFromResultSet(res));
             }
+            return set;
         }catch (Exception e){
             return null;
         }
@@ -74,8 +73,8 @@ public class VoyageDao extends DAO<Voyage> {
             PreparedStatement ps = connection.prepareStatement("INSERT INTO voyages" +
                     "(dateDepart, dateArrivee, description, id_ville_arrivee, id_ville_depart) " +
                     "VALUES (?, ?, ?,?,?)");
-            ps.setString(1, voyage.getDateDepart());
-            ps.setString(2, voyage.getDateArivee() );
+            ps.setTimestamp(1, voyage.getDateDepart());
+            ps.setTimestamp(2, voyage.getDateArrivee() );
             ps.setString(3, voyage.getDescription());
             ps.setInt(4, voyage.getVilleArivee().getId_ville());
             ps.setInt(5, voyage.getVilleDepart().getId_ville());
@@ -97,8 +96,8 @@ public class VoyageDao extends DAO<Voyage> {
                     " id_ville_depart = ? where id_voyage = ? ;");
 
 
-            ps.setString(1, voyage.getDateDepart());
-            ps.setString(2, voyage.getDateArivee());
+            ps.setTimestamp(1, voyage.getDateDepart());
+            ps.setTimestamp(2, voyage.getDateArrivee());
             ps.setString(3, voyage.getDescription());
             ps.setInt(4, voyage.getVilleArivee().getId_ville());
             ps.setInt(5, voyage.getVilleDepart().getId_ville());

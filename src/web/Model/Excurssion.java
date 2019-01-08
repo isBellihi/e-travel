@@ -2,19 +2,68 @@ package web.Model;
 
 import java.sql.Date;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Excurssion extends Voyage {
     private int id_excurssion;
     private int nbrPlace;
     private double frais ;
     private String description;
-    private String reglement ;
+    private String regelement ;
     private String titre ;
     private String fiche ;
-    private ArrayList<Outil> outils ;
+    private Set<Outil> outils ;
+    private Set<Reservation> reservations ;
+    private Set<Escale> escales ;
+    private Client client ;
 
     public Excurssion(){
-        outils = new ArrayList<Outil>();
+        outils = new HashSet<>();
+        reservations = new HashSet<>();
+        escales = new HashSet<>();
+    }
+
+    public Client getClient() {
+        return client;
+    }
+
+    public void setClient(Client client) {
+        if(this.client == null){
+            this.client = client;
+            this.client.addExcurssion(this);
+        }
+    }
+
+    public Set<Outil> getOutils() {
+        return outils;
+    }
+
+    public void setOutils(Set<Outil> outils) {
+        this.outils = outils;
+    }
+
+    public void addReservation(Reservation reservation){
+        this.reservations.add(reservation);
+        reservation.setExcurssion(this);
+    }
+
+    public void addOutil(Outil outil){
+        this.outils.add(outil);
+        outil.setExcurssion(this);
+    }
+
+    public void addEscale(Escale escale){
+        this.escales.add(escale);
+        escale.setExcurssion(this);
+    }
+
+    public Set<Escale> getEscales(){
+        return escales ;
+    }
+
+    public Set<Reservation> getReservations() {
+        return reservations;
     }
 
     public String getTitre() {
@@ -67,11 +116,10 @@ public class Excurssion extends Voyage {
         this.description = description;
     }
 
-    public String getReglement() {
-        return reglement;
+    public String getRegelement() {
+        return regelement;
     }
-
-    public void setReglement(String reglement) {
-        this.reglement = reglement;
+    public void setRegelement(String reglement) {
+        this.regelement = reglement;
     }
 }
