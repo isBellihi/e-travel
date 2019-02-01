@@ -71,5 +71,32 @@
         <url-pattern>/new</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>reserver une excurssion</servlet-name>
+        <servlet-class>web.Controlleur.ReservationServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>reserver une excurssion</servlet-name>
+        <url-pattern>/reservation/</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>JSON Excursion</servlet-name>
+        <servlet-class>web.Controlleur.JSONExcursion</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>JSON Excursion</servlet-name>
+        <url-pattern>/excursions</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>all Excursion</servlet-name>
+        <servlet-class>web.Controlleur.AllExcursions</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>all Excursion</servlet-name>
+        <url-pattern>/all</url-pattern>
+    </servlet-mapping>
+
 
 </web-app>

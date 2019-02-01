@@ -60,7 +60,6 @@ public class Reservation {
         if(this.client == null){
             this.client = client;
             this.client.addReservation(this);
-            this.excurssion.addReservation(this);
         }
     }
 

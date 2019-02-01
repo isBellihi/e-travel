@@ -102,7 +102,12 @@ public class ClientDao extends DAO<Client> {
             ps.setString(5, client.getAddress());
             ps.setString(6, client.getDateNaissance());
             ps.setString(7, client.getNumTele());
-            ps.setString(8, client.getImage());
+            if(client.getImage() != null){
+                ps.setString(8, client.getImage());
+            }else{
+                ps.setString(8,"/e-travel/public/front/images/profils/defaultprofil.png") ;
+            }
+
 
             int i = ps.executeUpdate();
             if(i == 1) {

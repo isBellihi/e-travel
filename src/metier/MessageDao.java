@@ -101,10 +101,9 @@ public class MessageDao extends DAO<Message>{
                     outilDAO.insert(outil);
                 }*/
                 return true;
-            }else {
             }
         } catch (Exception ex) {
-            System.out.println("error INSERT EXCURSSION: " + ex);
+            System.out.println("error INSERT message: " + ex);
         }
         return false;
     }

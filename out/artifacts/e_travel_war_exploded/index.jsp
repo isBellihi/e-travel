@@ -8,32 +8,10 @@
    <meta charset="utf-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1">
-   <link rel="shortcut icon" href="/e-travel/public/front/images/logos/favicon.ico">
-   <title>Home | Vrent Home  </title>
+   <title>Home | e-travel Home  </title>
 
    <meta property="og:image" content="">
    <meta name="mobile-web-app-capable" content="yes">
-
-   <!--<link href="public/front/css/css.css" rel="stylesheet" type="text/css" />
-   <link href="public/front/css/glyphicon.css" rel="stylesheet" type="text/css" />
-   <link href="public/front/css/awsome/css/font-awesome.css" rel="stylesheet" type="text/css" />
-   <link href="public/front/css/bootstrap.css" rel="stylesheet" type="text/css" />
-   <link href="public/front/css/cs-select.css" rel="stylesheet" type="text/css" />
-   <link href="public/front/css/style.css" rel="stylesheet" type="text/css" />
-   <link href="public/front/css/styles.css" rel="stylesheet" type="text/css" />
-
-   <link href="public/front/js/datepicker/datepicker3.css" rel="stylesheet" type="text/css" />
-   <link href="public/front/js/ninja/ninja-slider.css" rel="stylesheet" type="text/css" />
-   <link href="public/front/css/bootstrap-slider.css" rel="stylesheet" type="text/css" />
-   <link href="public/front/css/jquery.sidr.dark.css" rel="stylesheet" type="text/css" />
-
-   <link rel="stylesheet" type="text/css" href="public/front/anything/css/anythingslider.css">
-   <link rel="stylesheet" type="text/css" href="public/front/anything/css/theme-metallic.css">
-   <link rel="stylesheet" type="text/css" href="public/front/anything/css/theme-minimalist-round.css">
-   <link rel="stylesheet" type="text/css" href="public/front/anything/css/theme-minimalist-square.css">
-   <link rel="stylesheet" type="text/css" href="public/front/anything/css/theme-construction.css">
-   <link rel="stylesheet" type="text/css" href="public/front/anything/css/theme-cs-portfolio.css">
-    -->
    <style type="text/css">
 
       label.error {
@@ -64,24 +42,19 @@
    <!-- Wrapper for slides -->
    <div class="carousel-inner" role="listbox">
       <div class="item active">
-         <img src="/e-travel/public/front/images/banners/banner_1.jpg" alt="...">
+         <img src="/e-travel/public/front/images/banners/banner_1.png" alt="...">
          <div class="carousel-caption">
-            <h2>BIENVENUE À L'HÔTEL</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+            <h2>BIENVENU A e-travel</h2>
          </div>
       </div>
       <div class="item ">
-         <img src="/e-travel/public/front/images/banners/banner_2.jpg" alt="...">
+         <img src="/e-travel/public/front/images/banners/banner_2.png" alt="...">
          <div class="carousel-caption">
-            <h2>SENTEZ-VOUS COMME CHEZ VOUS</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
          </div>
       </div>
       <div class="item ">
-         <img src="/e-travel/public/front/images/banners/banner_3.jpg" alt="...">
+         <img src="/e-travel/public/front/images/banners/banner_3.png" alt="...">
          <div class="carousel-caption">
-            <h2>LOCATIONS DE VACANCES DE LUXE DANS LE MONDE ENTIER</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
          </div>
       </div>
 
@@ -126,17 +99,6 @@
                                  <option value="3"> 3 clients </option>
                                  <option value="4"> 4 clients </option>
                                  <option value="5"> 5 clients </option>
-                                 <option value="6"> 6 clients </option>
-                                 <option value="7"> 7 clients </option>
-                                 <option value="8"> 8 clients </option>
-                                 <option value="9"> 9 clients </option>
-                                 <option value="10"> 10 clients </option>
-                                 <option value="11"> 11 clients </option>
-                                 <option value="12"> 12 clients </option>
-                                 <option value="13"> 13 clients </option>
-                                 <option value="14"> 14 clients </option>
-                                 <option value="15"> 15 clients </option>
-                                 <option value="16"> 16+ clients </option>
                               </select>
                            </div>
                         </div>
@@ -152,98 +114,40 @@
    </div>
 </div>
 <div class="container">
-   <div class="row margin-top40" >
-      <div class="col-md-4" style="margin-bottom:15px;">
-         <div class="ex-image-container" style="background-image:url(public/front/images/starting_cities/starting_city_1.jpg);">
-            <a href="searchfd7f.html?location=New%20York&amp;source=ds">
-               <div class="ex-container">
-                  <div class="ex-center-content">
-                     <div class="h2">
-                        <strong>
-                           New York
-                        </strong>
-                     </div>
+
+   <div class="row margin-top20 mb30">
+      <h4 class="row-space-4 text-center-sm mb50">Listes suggerees</h4>
+      <c:forEach items="${excurssions}" var="item">
+         <div class="col-md-4 col-sm-4 col-xs-12 mb10">
+            <div class="similar-room-div" style="min-height: 250px;">
+               <a href="/e-travel/show/${item.id_excurssion}" class="similar-room">
+                  <img src="${item.fiche}" alt="">
+               </a>
+            </div>
+            <div>
+               <div class="media-left">
+                  <div class="media-user">
+                     <div class="doller-sign-bg">DH ${item.frais}</div>
                   </div>
                </div>
-            </a>
-         </div>
-      </div>
-      <div class="col-md-4" style="margin-bottom:15px;">
-         <div class="ex-image-container" style="background-image:url(public/front/images/starting_cities/starting_city_2.jpg);">
-            <a href="search430a.html?location=Sydney&amp;source=ds">
-               <div class="ex-container">
-                  <div class="ex-center-content">
-                     <div class="h2">
-                        <strong>
-                           Sydney
-                        </strong>
-                     </div>
+               <div class="media-user">
+                  <div class="col-xs-9 mb20">
+                     <br><br>
+                     <div class="location-title"><a href="/e-travel/show/${item.id_excurssion}">${item.titre}</a></div>
+                     <div class="text-muted">${item.dateDepart} -- ${item.dateArrivee}</div>
+                     <div class="text-muted">${item.villeDepart.nom} -- ${item.villeArrivee.nom}</div>
+                  </div>
+                  <div class="col-xs-3">
+                     <br>
+                     <div class="media-user-img"><a href=""><img src="${item.client.image}" alt="" width="100%"></a></div>
+                     <div class="text-muted"><a href=""> ${item.client.nom} ${item.client.prenom}</a></div>
                   </div>
                </div>
-            </a>
+            </div>
          </div>
-      </div>
-      <div class="col-md-4" style="margin-bottom:15px;">
-         <div class="ex-image-container" style="background-image:url(public/front/images/starting_cities/starting_city_3.jpg);">
-            <a href="search6f05.html?location=Paris&amp;source=ds">
-               <div class="ex-container">
-                  <div class="ex-center-content">
-                     <div class="h2">
-                        <strong>
-                           Paris
-                        </strong>
-                     </div>
-                  </div>
-               </div>
-            </a>
-         </div>
-      </div>
-      <div class="col-md-4" style="margin-bottom:15px;">
-         <div class="ex-image-container" style="background-image:url(public/front/images/starting_cities/starting_city_4.jpg);">
-            <a href="search644f.html?location=Barcelona&amp;source=ds">
-               <div class="ex-container">
-                  <div class="ex-center-content">
-                     <div class="h2">
-                        <strong>
-                           Barcelona
-                        </strong>
-                     </div>
-                  </div>
-               </div>
-            </a>
-         </div>
-      </div>
-      <div class="col-md-4" style="margin-bottom:15px;">
-         <div class="ex-image-container" style="background-image:url(public/front/images/starting_cities/starting_city_5.jpg);">
-            <a href="search7c9a.html?location=Thailand&amp;source=ds">
-               <div class="ex-container">
-                  <div class="ex-center-content">
-                     <div class="h2">
-                        <strong>
-                           Thailand
-                        </strong>
-                     </div>
-                  </div>
-               </div>
-            </a>
-         </div>
-      </div>
-      <div class="col-md-4" style="margin-bottom:15px;">
-         <div class="ex-image-container" style="background-image:url(public/front/images/starting_cities/starting_city_6.jpg);">
-            <a href="search78e4.html?location=Switzerland&amp;source=ds">
-               <div class="ex-container">
-                  <div class="ex-center-content">
-                     <div class="h2">
-                        <strong>
-                           Switzerland
-                        </strong>
-                     </div>
-                  </div>
-               </div>
-            </a>
-         </div>
-      </div>
+      </c:forEach>
    </div>
+</div>
 </div>
 
 <div id="sidr" class="sidenav" style="display: none;">
@@ -254,6 +158,36 @@
    <a href="login.html">Listez votre espace</a>
 </div>
 <%@ include file="/WEB-INF/layouts/footer.jsp" %>
+
+<script type="text/javascript">
+   /* Document.$(ready(function () {
+        $.ajax({
+
+            url : "/e-travel/excursions",
+            dataType : 'json',
+            error : function() {
+
+                alert("Error Occured");
+            },
+            success : function(data) {
+                var receivedData = [];
+
+                $.each(data.jsonArray, function(index) {
+                    $.each(data.jsonArray[index], function(key, value) {
+                        var point = [];
+
+                        point.push(key);
+                        point.push(value);
+                        receivedData.push(point);
+                    });
+                });
+
+            }
+        });
+    }));*/
+
+</script>
+
 <div id="alert_model" class="modal fade" role="dialog">
    <div class="modal-dialog">
 

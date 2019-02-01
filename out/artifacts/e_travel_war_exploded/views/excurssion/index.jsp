@@ -63,7 +63,7 @@
    <div class="panel-footer">
     <div class="col-md-2 col-sm-2 col-xs-12"><img class="img-responsive" style="width:150px; height:125px;" src="${excurssion.fiche}"></div>
     <div class="col-md-7 col-sm-7 col-xs-12 margin-top10">
-     <a href="" class="text-normal"><div class="h4">${excurssion.titre}</div></a>
+     <a href="/e-travel/show/${excurssion.id_excurssion}" class="text-normal"><div class="h4">${excurssion.titre}</div></a>
      <div class="h6 text-danger">${excurssion.dateDepart} --  ${excurssion.dateArrivee}</div>
      <div class="h6 text-danger">${excurssion.villeDepart.nom} --  ${excurssion.villeArrivee.nom}</div>
     </div>

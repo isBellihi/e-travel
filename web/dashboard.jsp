@@ -38,7 +38,9 @@
   </div>
   <div class="panel panel-default">
    <div class="panel-body h4">
-    Messages  (<c:out value="${requestScope.messages.size()}"/>)
+    <c:set var="count" value="0"/>
+
+    Messages  (<c:out value="${messages.size()}"/>)
    </div>
    <div class="panel-footer ">
     <ul class="list-layout">

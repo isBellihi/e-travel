@@ -917,7 +917,7 @@ ul.styled-list.list-star li:before {
 }
 .carousel-caption > h2 {
   font-family: "Playfair Display", serif;
-  color: #fff;
+  color: black;
   /*font-size: 67px;*/
   font-weight: 400;
   text-transform: uppercase;

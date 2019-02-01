@@ -1,7 +1,6 @@
 package web.Controlleur;
 
 import metier.*;
-import web.Controlleur.auth.ServletLogin;
 import web.Model.*;
 
 import javax.servlet.*;
@@ -48,7 +47,7 @@ public class Router implements Filter {
                         if(msgs != null) messages.addAll(msgs);
                     }
                     request.setAttribute("reservations",reservations);
-                    request.setAttribute("messages", messages);
+                    request.setAttribute("messages",messages);
                     request.getServletContext().getRequestDispatcher(
                             "/dashboard.jsp").forward(request, response);
 
@@ -60,7 +59,7 @@ public class Router implements Filter {
                     Client client = (Client)((HttpServletRequest) request).getSession().getAttribute("client");
                     request.setAttribute("excurssions", new ClientDao().getExcurssions(client));
                     request.getServletContext().getRequestDispatcher(
-                            "/listexcurssions.jsp").forward(request, response);
+                            "/views/excurssion/index.jsp").forward(request, response);
                 }
             }else if(requestURI.matches("/e-travel/show/[0-9]*")){
                 int indice  = Integer.parseInt(requestURI.split("/")[requestURI.split("/").length - 1]);
@@ -88,6 +87,10 @@ public class Router implements Filter {
                 } else {
                     chain.doFilter(request, response);
                 }
+            }else if(requestURI.equals("/e-travel/index")){
+                request.setAttribute("excurssions",new ExcurssionDao().getAll());
+                request.getServletContext().getRequestDispatcher(
+                        "/index.jsp").forward(request, response);
             }
             else {
              //   request.getServletContext().getRequestDispatcher(

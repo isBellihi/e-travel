@@ -182,26 +182,28 @@
     <div class="row"> <b>Ce qui n'est pas inclus :</b></div>
      <br>
      <c:if test="${(sessionScope.client != null && excurssion.client.id_client != sessionScope.client.id_client) || sessionScope.client == null}">
-    <form action="" method="post">
+    <form action="/e-travel/reservation/" method="post">
      <c:forEach items="${excurssion.outils}" var="outil" >
       <c:if test="${outil.prixReservation > 0}">
        <div class="col-md-8">
          ${outil.nom}
        </div>
        <div class="col-md-4 form-group" >
-        <input type="checkbox" class="form-control" name="${outil.id_outil}">
+        <input type="checkbox" class="form-control" name= "options"  value="${outil.id_outil}">
         <label for="${outil.id_outil}" class="">${outil.prixReservation} DH / personne</label>
        </div>
        <br>
       </c:if>
      </c:forEach>
+     <input type="hidden" name = "excurssion" value="${excurssion.id_excurssion}" />
+     <input type="hidden" name = "host" value="${sessionScope.client.id_client}" />
      <br><br><br><br>
      <div class="book_btn col-md-3 mb20">
-      <a class="col-md-12 col-sm-12 col-xs-12 btn ex-btn btn btn-success" href="#reservation">
+      <input type="submit" class="col-md-12 col-sm-12 col-xs-12 btn ex-btn btn btn-success" href="#reservation">
                     <span class="">
                       Envoyer la demande
                     </span>
-      </a>
+      </input>
      </div>
     </form>
      </c:if>

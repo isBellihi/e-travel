@@ -119,12 +119,12 @@
          <li><a href="/e-travel/logout">Connectez - Out</a></li>
         </ul>
        </li>
-       <li><a href="https://vrent.techvill.net/property/create" class="btn ex-btn navbar-btn topbar-btn">Listez votre espace</a></li>
+       <li><a href="/e-travel/new" class="btn ex-btn navbar-btn topbar-btn">Publier un offre</a></li>
       </c:when>
       <c:when test="${sessionScope.get('client') == null}">
        <li><a href="/e-travel/signup">S'inscrire</a></li>
        <li><a href="/e-travel/signin">S'identifier</a></li>
-       <li><a href="/e-travel/signin" class="btn ex-btn navbar-btn topbar-btn">Listez votre espace </a></li>
+       <li><a href="/e-travel/all" class="btn ex-btn navbar-btn topbar-btn">Les excursions disponibles</a></li>
       </c:when>
      </c:choose>
     </ul>

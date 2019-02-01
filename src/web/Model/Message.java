@@ -15,8 +15,11 @@ public class Message {
     private Reservation reservation ;
     private String msg ;
     private Timestamp createdat ;
-    private Boolean expediteur = null ; // null ==> client vers le hote , different de null hote vers le client
+    private Boolean expediteur = null ; // null ==> client vers le hote , true ou 1 hote vers le client
 
+    /*
+    * Expediteur = true (ou 1) ==> le message envoyé par le proprietaire d’excursion et verse versa
+    * */
     public Message(){}
 
     public Boolean getExpediteur() {
