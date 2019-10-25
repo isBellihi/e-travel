@@ -9,8 +9,9 @@ public class SingletonConnection {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/e-travel","root","");
+            System.out.println("connect to database");
         }catch (Exception e){
-
+            System.out.println(e);
         }
     }
 

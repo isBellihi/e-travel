@@ -22,6 +22,8 @@ import java.util.List;
 import java.util.Set;
 
 @WebServlet(name = "CreateExcurssionServlet")
+
+
 public class CreateExcurssionServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -49,7 +51,8 @@ public class CreateExcurssionServlet extends HttpServlet {
         String sorties[] = request.getParameterValues("dateSortie") ;
         List<Timestamp> dateEntree = new ArrayList<>();// = new Timestamp[request.getParameterValues("dateEntree").length];
         List<Timestamp> dateSortie = new ArrayList<>();; // new Timestamp[request.getParameterValues("dateSortie").length];
-        for (int i= 0;i<entree.length;i++){
+        for (int i= 0;i<entree.length;i++)
+            {
             dateEntree.add(Timestamp.valueOf(entree[i].replace("T" , " ") + ":00")) ;
             dateSortie.add(Timestamp.valueOf(sorties[i].replace("T" , " ")+ ":00")) ;
         }
